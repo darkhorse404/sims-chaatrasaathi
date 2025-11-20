@@ -89,7 +89,7 @@ const AdminHomePage = () => {
                     </StyledPaper>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={6} lg={3}>
+                {/* <Grid item xs={12} sm={6} md={6} lg={3}>
                     <StyledPaper elevation={0}>
                         <IconWrapper style={{ background: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)' }}>
                             <StyledImage src={Fees} alt="Fees" />
@@ -102,7 +102,7 @@ const AdminHomePage = () => {
                             <ProgressFill width="90%" color="#38f9d7" />
                         </ProgressBar>
                     </StyledPaper>
-                </Grid>
+                </Grid> */}
 
                 <Grid item xs={12}>
                     <NoticePaper elevation={0}>
