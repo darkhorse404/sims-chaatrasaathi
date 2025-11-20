@@ -24,10 +24,10 @@ const Homepage = () => {
                 <BrandChip label="🎓 Education Reimagined" />
                 <HeroTitle>
                   ChaatraSaathi
-                  <GradientText> College Management</GradientText>
+                  <GradientText> Student Management</GradientText>
                 </HeroTitle>
                 <HeroSubtitle>
-                  Transform your educational institution with India's most intuitive college management system. 
+                  Transform your educational institution with India's most intuitive Student Management system. 
                   Empowering admins, teachers, and students with seamless collaboration.
                 </HeroSubtitle>
                 
