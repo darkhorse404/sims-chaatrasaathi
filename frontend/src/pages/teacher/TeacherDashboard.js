@@ -36,15 +36,45 @@ const TeacherDashboard = () => {
         palette: {
             mode: 'dark',
             primary: {
-                main: '#FFC0CB', // Keeping your pink color for primary
+                main: '#f093fb',
+            },
+            secondary: {
+                main: '#f5576c',
             },
             background: {
-                default: '#121212',
-                paper: '#1e1e1e',
+                default: '#0f0f23',
+                paper: '#1a1a2e',
             },
             text: {
                 primary: '#ffffff',
-                secondary: '#b3b3b3',
+                secondary: '#a0aec0',
+            },
+        },
+        typography: {
+            fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
+            h6: {
+                fontWeight: 600,
+                letterSpacing: '0.5px',
+            },
+        },
+        shape: {
+            borderRadius: 12,
+        },
+        shadows: [
+            'none',
+            '0 2px 8px rgba(0,0,0,0.15)',
+            '0 4px 16px rgba(0,0,0,0.2)',
+            '0 8px 24px rgba(0,0,0,0.25)',
+            '0 12px 32px rgba(0,0,0,0.3)',
+            ...Array(20).fill('0 16px 48px rgba(0,0,0,0.35)'),
+        ],
+        components: {
+            MuiPaper: {
+                styleOverrides: {
+                    root: {
+                        backgroundImage: 'none',
+                    },
+                },
             },
         },
     });
@@ -54,10 +84,16 @@ const TeacherDashboard = () => {
         <ThemeProvider theme={darkTheme}>
             <Box sx={{ display: 'flex' }}>
                 <CssBaseline />
-                <AppBar open={open} position='absolute' sx={{ 
-        backgroundColor: '#ed1c24'  // e.g., '#ff0000' for red
-    }}>
-                    <Toolbar sx={{ pr: '24px' }}>
+                <AppBar 
+                    open={open} 
+                    position='absolute' 
+                    sx={{ 
+                        background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+                        boxShadow: '0 4px 20px rgba(240, 147, 251, 0.3)',
+                        backdropFilter: 'blur(10px)',
+                    }}
+                >
+                    <Toolbar sx={{ pr: '24px', minHeight: '70px' }}>
                         <IconButton
                             edge="start"
                             color="inherit"
@@ -66,6 +102,11 @@ const TeacherDashboard = () => {
                             sx={{
                                 marginRight: '36px',
                                 ...(open && { display: 'none' }),
+                                '&:hover': {
+                                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                                    transform: 'scale(1.05)',
+                                },
+                                transition: 'all 0.2s ease-in-out',
                             }}
                         >
                             <MenuIcon />
@@ -75,26 +116,57 @@ const TeacherDashboard = () => {
                             variant="h6"
                             color="inherit"
                             noWrap
-                            sx={{ flexGrow: 1 }}
+                            sx={{ 
+                                flexGrow: 1,
+                                fontWeight: 700,
+                                letterSpacing: '1px',
+                                fontSize: '1.3rem',
+                            }}
                         >
                             Teacher Dashboard
                         </Typography>
                         <AccountMenu />
                     </Toolbar>
                 </AppBar>
-                <Drawer variant="permanent" open={open} sx={open ? styles.drawerStyled : styles.hideDrawer}>
-                    <Toolbar sx={styles.toolBarStyled}>
-                        <IconButton onClick={toggleDrawer}>
+                <Drawer 
+                    variant="permanent" 
+                    open={open} 
+                    sx={{
+                        ...(open ? styles.drawerStyled : styles.hideDrawer),
+                        '& .MuiDrawer-paper': {
+                            background: 'linear-gradient(180deg, #1a1a2e 0%, #16213e 100%)',
+                            borderRight: '1px solid rgba(240, 147, 251, 0.1)',
+                        },
+                    }}
+                >
+                    <Toolbar 
+                        sx={{
+                            ...styles.toolBarStyled,
+                            minHeight: '70px',
+                            borderBottom: '1px solid rgba(240, 147, 251, 0.1)',
+                        }}
+                    >
+                        <IconButton 
+                            onClick={toggleDrawer}
+                            sx={{
+                                color: '#f093fb',
+                                '&:hover': {
+                                    backgroundColor: 'rgba(240, 147, 251, 0.1)',
+                                    transform: 'rotate(180deg)',
+                                },
+                                transition: 'all 0.3s ease-in-out',
+                            }}
+                        >
                             <ChevronLeftIcon />
                         </IconButton>
                     </Toolbar>
-                    <Divider />
+                    <Divider sx={{ borderColor: 'rgba(240, 147, 251, 0.1)' }} />
                     <List component="nav">
                         <TeacherSideBar />
                     </List>
                 </Drawer>
                 <Box component="main" sx={styles.boxStyled}>
-                    <Toolbar />
+                    <Toolbar sx={{ minHeight: '70px' }} />
                     <Routes>
                         <Route path="/" element={<TeacherHomePage />} />
                         <Route path='*' element={<Navigate to="/" />} />
@@ -122,13 +194,11 @@ export default TeacherDashboard
 
 const styles = {
     boxStyled: {
-        backgroundColor: (theme) =>
-            theme.palette.mode === 'light'
-                ? theme.palette.grey[100]
-                : theme.palette.grey[900],
+        backgroundColor: '#0f0f23',
         flexGrow: 1,
         height: '100vh',
         overflow: 'auto',
+        padding: '24px',
     },
     toolBarStyled: {
         display: 'flex',

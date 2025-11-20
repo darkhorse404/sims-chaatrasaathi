@@ -1,6 +1,6 @@
 {
-  "name": "frontend",
-  "version": "0.1.0",
+  "name": "chaatrasaathi-frontend",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.6",
@@ -24,10 +24,10 @@
     "styled-components": "^5.3.10"
   },
   "scripts": {
-  "start": "react-scripts start", 
-  "build": "react-scripts build", 
-  "test": "react-scripts test",  
-  "eject": "react-scripts eject"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
